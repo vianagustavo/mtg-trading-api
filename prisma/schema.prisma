@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CardListing {
+  id String @id @default(uuid())
+  name String
+  edition String
+  language Language
+  foil Boolean
+  price Decimal
+  quantity Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("cardlistings")
+}
+
+enum Language {
+  ENGLISH
+  PORTUGUESE
+  JAPANESE
+}
