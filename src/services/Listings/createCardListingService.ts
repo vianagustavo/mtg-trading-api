@@ -1,5 +1,6 @@
-import { prismaClient } from "../database/prismaClient";
-import { ICreateListingRequest } from "../domain/requestDto";
+import { prismaClient } from "../../database/prismaClient";
+import { ICreateListingRequest } from "../../domain/requestDto";
+
 
 
 class CreateCardListingService {

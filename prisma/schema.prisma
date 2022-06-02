@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model CardListing {
+model Card {
   id String @id @default(uuid())
   name String
   edition String
@@ -17,12 +17,26 @@ model CardListing {
   quantity Int
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId String
 
-  @@map("cardlistings")
+  @@map("cards")
 }
 
 enum Language {
   ENGLISH
   PORTUGUESE
   JAPANESE
+}
+
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  cards Card[]
+
+  @@map("users")
 }
