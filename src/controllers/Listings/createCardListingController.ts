@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import {
   ICreateListingRequest,
-  ICreateListingResponse
+  ICreateListingResponse,
+  RequestWithUserId
 } from "../../domain/requestDto";
 import { CreateCardListingService } from "../../services/Listings/createCardListingService";
 
@@ -16,6 +17,7 @@ class CreateCardListingController {
       quantity
     }: ICreateListingRequest = request.body;
 
+    const ownerId = (request as RequestWithUserId).user_id;
     const createCardListingService = new CreateCardListingService();
     const cardListing: ICreateListingResponse =
       await createCardListingService.execute({
@@ -24,7 +26,8 @@ class CreateCardListingController {
         language,
         foil,
         price,
-        quantity
+        quantity,
+        ownerId
       });
 
     return response.json(cardListing);

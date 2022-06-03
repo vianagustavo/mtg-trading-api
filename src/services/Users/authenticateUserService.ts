@@ -1,9 +1,8 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-import { InvalidArgument } from "../../app";
 import { prismaClient } from "../../database/prismaClient";
+import { InvalidArgument } from "../../domain/error";
 import { IAuthenticateUserRequest } from "../../domain/requestDto";
-
 
 class AuthenticateUserService {
   async execute({ email, password }: IAuthenticateUserRequest) {
@@ -20,7 +19,7 @@ class AuthenticateUserService {
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error("Email/Password incorrect");
+      throw new InvalidArgument("Email/Password incorrect");
     }
 
     const token = sign(

@@ -1,8 +1,12 @@
 import { prismaClient } from "../../database/prismaClient";
 
 class ListPlayerListingService {
-  async execute() {
-    return await prismaClient.cardListing.findMany();
+  async execute(ownerId: string) {
+    return await prismaClient.card.findMany({
+      where: {
+        ownerId
+      }
+    });
   }
 }
 

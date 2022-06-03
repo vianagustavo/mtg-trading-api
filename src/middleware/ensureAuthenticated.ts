@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
-import { IPayload, IUserIdWithRequest } from "../domain/requestDto";
-
+import { IPayload, RequestWithUserId } from "../domain/requestDto";
 
 export function ensureAuthenticated(
   request: Request,
@@ -18,7 +17,7 @@ export function ensureAuthenticated(
 
   try {
     const { sub } = verify(token, `${process.env.USER_SECRET}`) as IPayload;
-    (request as IUserIdWithRequest).user_id = sub;
+    (request as RequestWithUserId).user_id = sub;
     return next();
   } catch (err) {
     return response.status(401).end();
