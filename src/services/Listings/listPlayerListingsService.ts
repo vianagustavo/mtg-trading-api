@@ -5,6 +5,9 @@ class ListPlayerListingService {
     return await prismaClient.card.findMany({
       where: {
         ownerId
+      },
+      orderBy: {
+        price: "desc"
       }
     });
   }

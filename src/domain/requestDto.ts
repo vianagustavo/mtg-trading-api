@@ -49,3 +49,8 @@ export interface IAuthenticateUserRequest {
   email: string;
   password: string;
 }
+
+export interface IUpdateCardListingFilters {
+  quantity?: number;
+  price?: number;
+}

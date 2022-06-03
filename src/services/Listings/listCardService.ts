@@ -6,6 +6,9 @@ class ListCardService {
       where: {
         name,
         ownerId
+      },
+      orderBy: {
+        price: "desc"
       }
     });
   }
