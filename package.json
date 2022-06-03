@@ -6,6 +6,8 @@
   "author": "Gustavo Viana <gustavofvv@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
+    "start": "prisma migrate deploy && node dist/src/server.js",
     "dev": "ts-node-dev -r dotenv/config src/server.ts"
   },
   "dependencies": {
