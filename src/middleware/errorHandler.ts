@@ -1,5 +1,9 @@
 import { Response, Request, NextFunction } from "express";
-import { InternalServerError, InvalidArgument, NotFound } from "../app";
+import {
+  InternalServerError,
+  InvalidArgument,
+  NotFound
+} from "../domain/error";
 
 export function errorHandler(
   err: Error,
