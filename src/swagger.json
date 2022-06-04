@@ -198,15 +198,15 @@
         }
       }
     },
-    "/listing/:name": {
+    "/listing/{name}:": {
       "get": {
         "parameters": {
         "in": "path",
         "name": "name",
-        "required": "false",
         "schema": {
           "type": "string"
-        }
+        },
+        "required": "false"
         },
         "security": [{ "tokenAuth": [] }],
         "tags": ["Card Listing"],
@@ -262,7 +262,7 @@
         }
       }
     },
-    "/listing/:id": {
+    "/listing/{id}:": {
       "patch": {
         "parameters": {
           "in": "path",
