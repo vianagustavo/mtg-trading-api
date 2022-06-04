@@ -1,0 +1,342 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "MTG Trading API Documentation",
+      "description": "API Rent",
+      "version": "1.0.0",
+      "contact": {
+        "email": "gustavofvv@gmail.com"
+      }
+ },
+  "paths": {
+    "/user": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Creates an User",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "loginPassword": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Gustavo Ferreira",
+                  "email": "test@email.com",
+                  "loginPassword": "1234"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid Argument/User already exists"
+          }
+        }
+      }
+    },
+    "/login/user": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Authenticates an user",
+        "description": "Authenticates user via JWT",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "test@email.com",
+                  "password": "1234"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token"
+          },
+          "400": {
+            "description": "Email/Password incorrect"
+          }
+        }
+      }
+    },
+    "/create-listing": {
+      "post": {
+        "security": [{ "tokenAuth": [] }],
+        "tags": ["Card Listing"],
+        "summary": "Creates a Listing",
+        "description": "Creates a Card Listing",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "edition": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": ["ENGLISH", "PORTUGUESE", "JAPANESE"]
+                  },
+                  "foil": {
+                    "type": "boolean"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "quantity": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "name": "Pesadelo",
+                  "edition": "Arena Beginner Set",
+                  "language": "ENGLISH",
+                  "foil": "false",
+                  "price": "19.99",
+                  "quantity": "1"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Create listing successfull"
+          },
+          "400": {
+            "description": "Card already listed"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/listing": {
+      "get": {
+        "security": [{ "tokenAuth": [] }],
+        "tags": ["Card Listing"],
+        "summary": "Lists all Cards",
+        "description": "Lists all Cards of logged User",
+        "responses": {
+          "200": {
+            "description": "Get all listings successfull",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "edition": {
+                        "type": "string"
+                      },
+                      "language": {
+                        "type": "string",
+                        "enum": ["ENGLISH", "PORTUGUESE", "JAPANESE"]
+                      },
+                      "foil": {
+                        "type": "boolean"
+                      },
+                      "price": {
+                        "type": "number"
+                      },
+                      "quantity": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      },
+                      "ownerId": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/listing/:name": {
+      "get": {
+        "parameters": {
+        "in": "path",
+        "name": "name",
+        "required": "false",
+        "schema": {
+          "type": "string"
+        }
+        },
+        "security": [{ "tokenAuth": [] }],
+        "tags": ["Card Listing"],
+        "summary": "Lists all Cards",
+        "description": "Lists all Cards of logged User",
+        "responses": {
+          "200": {
+            "description": "Get all listings successfull",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "edition": {
+                        "type": "string"
+                      },
+                      "language": {
+                        "type": "string",
+                        "enum": ["ENGLISH", "PORTUGUESE", "JAPANESE"]
+                      },
+                      "foil": {
+                        "type": "boolean"
+                      },
+                      "price": {
+                        "type": "number"
+                      },
+                      "quantity": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      },
+                      "ownerId": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/listing/:id": {
+      "patch": {
+        "parameters": {
+          "in": "path",
+          "name": "id",
+          "required": "false",
+          "schema": {
+            "type": "string"
+          }
+          },
+          "security": [{ "tokenAuth": [] }],
+          "tags": ["Card Listing"],
+          "summary": "Updates a Listing",
+          "description": "Updated Price and/or Quantity of desired Listing",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "price": {
+                      "type": "number"
+                    },
+                    "quantity": {
+                      "type": "number"
+                    }
+                  },
+                  "example": {
+                    "price": "19.99",
+                    "quantity": "1"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": ""
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+      },
+      "delete": {
+        "parameters": {
+          "in": "path",
+          "name": "id",
+          "required": "false",
+          "schema": {
+            "type": "string"
+          }
+          },
+          "security": [{ "tokenAuth": [] }],
+          "tags": ["Card Listing"],
+          "summary": "Deletes a Listing",
+          "description": "Delete a desired Listing",
+          "responses": {
+            "200": {
+              "description": ""
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "tokenAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
