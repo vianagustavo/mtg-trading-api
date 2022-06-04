@@ -121,9 +121,9 @@
                   "name": "Pesadelo",
                   "edition": "Arena Beginner Set",
                   "language": "ENGLISH",
-                  "foil": "false",
-                  "price": "19.99",
-                  "quantity": "1"
+                  "foil": false,
+                  "price": 19.99,
+                  "quantity": 1
                 }
               }
             }
