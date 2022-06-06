@@ -1,16 +1,17 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-import { prismaClient } from "../../database/prismaClient";
 import { InvalidArgument } from "../../domain/error";
 import { IAuthenticateUserRequest } from "../../domain/requestDto";
+import { IFindUserByEmailRepository } from "../../repositories/User/interface/IFindUserRepository";
 
 class AuthenticateUserService {
+  private findUserByEmailRepository: IFindUserByEmailRepository;
+
+  constructor(findUserByEmailRepository: IFindUserByEmailRepository) {
+    this.findUserByEmailRepository = findUserByEmailRepository;
+  }
   async execute({ email, password }: IAuthenticateUserRequest) {
-    const user = await prismaClient.user.findUnique({
-      where: {
-        email
-      }
-    });
+    const user = await this.findUserByEmailRepository.findUserByEmail(email);
 
     if (!user) {
       throw new InvalidArgument("Email/Password incorrect");
