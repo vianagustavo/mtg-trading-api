@@ -1,7 +1,7 @@
 import { InvalidArgument } from "../../domain/error";
 import { ICreateListingRequest } from "../../domain/requestDto";
-import { ICreateCardListingRepository } from "../../repositories/Listing/interface/ICreateCardListingRepository";
-import { IFindCardByDataRepository } from "../../repositories/Listing/interface/IFindCardByDataRepository";
+import { ICreateCardListingRepository } from "../../domain/interface/repositories/Listing/ICreateCardListingRepository";
+import { IFindCardByDataRepository } from "../../domain/interface/repositories/Listing/IFindCardByDataRepository";
 
 export type CreateListRequestWithOwnerId = ICreateListingRequest & {
   ownerId: string;

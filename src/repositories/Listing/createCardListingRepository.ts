@@ -1,7 +1,7 @@
 import { Card, PrismaClient } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
 import { CreateListRequestWithOwnerId } from "../../services/Listings/createCardListingService";
-import { ICreateCardListingRepository } from "./interface/ICreateCardListingRepository";
+import { ICreateCardListingRepository } from "../../domain/interface/repositories/Listing/ICreateCardListingRepository";
 
 export class createCardListingRepository
   implements ICreateCardListingRepository

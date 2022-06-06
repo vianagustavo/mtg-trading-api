@@ -1,7 +1,7 @@
 import { InvalidArgument } from "../../domain/error";
+import { IUpdateCardListingRepository } from "../../domain/interface/repositories/Listing/IUpdateCardListingRepository";
 import { IUpdateCardListingFilters } from "../../domain/requestDto";
 import { findCardByIdAndOwnerRepository } from "../../repositories/Listing/findCardByIdAndOwnerRepository";
-import { IUpdateCardListingRepository } from "../../repositories/Listing/interface/IUpdateCardListingRepository";
 import { GetCardByIdService } from "./getCardByIdService";
 
 class UpdateCardListingService {

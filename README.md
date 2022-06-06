@@ -91,7 +91,7 @@ O workflow completo se encontra em: ``` .github/workflows/full-workflow.yml ```
 | :------- | :---------------------------------------------: | :----------------------------------------: | :-------------------: |
 | `POST`   |                     `/user`                     |         Criação de novo usuário            |       ---------       |
 | `POST`   |                    `/login/user`                |         Autenticação de usuário            |       ---------       |
-| `POST`   |                   `/create-listing`             |       Criação de listagem de carta         |        Usuário        |
+| `POST`   |                    `/listing`                   |       Criação de listagem de carta         |        Usuário        |
 | `GET`    |                    `/listing`                   |   Leitura de todas listagens por usuário   |        Usuário        |
 | `GET`    |                   `/listing/:name`              | Leitura de listagens filtrando por nome    |        Usuário        |
 | `PATCH`  |                   `/listing/:id`                |   Atualização de preço e/ou quantidade     |        Usuário        |

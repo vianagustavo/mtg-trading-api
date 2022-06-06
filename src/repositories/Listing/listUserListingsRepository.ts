@@ -1,6 +1,6 @@
 import { Card, PrismaClient } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
-import { IListUserListingsRepository } from "./interface/IListUserListingsRepository";
+import { IListUserListingsRepository } from "../../domain/interface/repositories/Listing/IListUserListingsRepository";
 
 export class listUserListingsRepository implements IListUserListingsRepository {
   private prismaClient: PrismaClient;

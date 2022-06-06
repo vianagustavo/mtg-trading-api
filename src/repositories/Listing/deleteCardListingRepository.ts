@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
 
-import { IDeleteCardListingRepository } from "./interface/IDeleteCardListingRepository";
+import { IDeleteCardListingRepository } from "../../domain/interface/repositories/Listing/IDeleteCardListingRepository";
 
 export class DeleteCardListingRepository
   implements IDeleteCardListingRepository

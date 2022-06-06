@@ -2,7 +2,7 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { InvalidArgument } from "../../domain/error";
 import { IAuthenticateUserRequest } from "../../domain/requestDto";
-import { IFindUserByEmailRepository } from "../../repositories/User/interface/IFindUserRepository";
+import { IFindUserByEmailRepository } from "../../domain/interface/repositories/User/IFindUserRepository";
 
 class AuthenticateUserService {
   private findUserByEmailRepository: IFindUserByEmailRepository;

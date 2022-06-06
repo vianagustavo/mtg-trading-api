@@ -1,5 +1,5 @@
 import { Card } from "@prisma/client";
-import { IUpdateCardListingFilters } from "../../../domain/requestDto";
+import { IUpdateCardListingFilters } from "../../../requestDto";
 
 export interface IUpdateCardListingRepository {
   updateCardListing(id: string, info: IUpdateCardListingFilters): Promise<Card>;

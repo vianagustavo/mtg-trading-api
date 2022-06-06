@@ -1,9 +1,9 @@
 import { User } from "@prisma/client";
 import { ICreateUserRequest } from "../../domain/requestDto";
-import { ICreateUserRepository } from "../../repositories/User/interface/ICreateUserRepository";
-import { IFindUserByEmailRepository } from "../../repositories/User/interface/IFindUserRepository";
+import { IFindUserByEmailRepository } from "../../domain/interface/repositories/User/IFindUserRepository";
 import { mockUser } from "../../_mocks/userMock";
 import { CreateUserService } from "./createUserService";
+import { ICreateUserRepository } from "../../domain/interface/repositories/User/ICreateUserRepository";
 
 describe("Create User", () => {
   it("Should be able to create an user", async () => {

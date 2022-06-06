@@ -1,5 +1,5 @@
 import { findCardByIdAndOwnerRepository } from "../../repositories/Listing/findCardByIdAndOwnerRepository";
-import { IDeleteCardListingRepository } from "../../repositories/Listing/interface/IDeleteCardListingRepository";
+import { IDeleteCardListingRepository } from "../../domain/interface/repositories/Listing/IDeleteCardListingRepository";
 import { GetCardByIdService } from "./getCardByIdService";
 
 class DeleteCardListingService {

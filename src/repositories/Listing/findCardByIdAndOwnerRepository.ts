@@ -1,6 +1,6 @@
 import { Card, PrismaClient } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
-import { IFindCardByIdAndOwnerRepository } from "./interface/IFindCardByIdAndOwnerRepository";
+import { IFindCardByIdAndOwnerRepository } from "../../domain/interface/repositories/Listing/IFindCardByIdAndOwnerRepository";
 
 export class findCardByIdAndOwnerRepository
   implements IFindCardByIdAndOwnerRepository

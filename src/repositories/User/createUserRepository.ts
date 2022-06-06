@@ -1,7 +1,7 @@
 import { PrismaClient, User } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
+import { ICreateUserRepository } from "../../domain/interface/repositories/User/ICreateUserRepository";
 import { ICreateUserRequest } from "../../domain/requestDto";
-import { ICreateUserRepository } from "./interface/ICreateUserRepository";
 
 export class createUserRepository implements ICreateUserRepository {
   private prismaClient: PrismaClient;

@@ -1,4 +1,4 @@
-import { IListCardByNameRepository } from "../../repositories/Listing/interface/IListCardByNameRepository";
+import { IListCardByNameRepository } from "../../domain/interface/repositories/Listing/IListCardByNameRepository";
 
 class ListCardByNameService {
   private listCardByNameRepository: IListCardByNameRepository;

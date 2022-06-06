@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["extendedIndexes"]
 }
 
 datasource db {
@@ -20,6 +21,7 @@ model Card {
   owner User @relation(fields: [ownerId], references: [id])
   ownerId String
 
+  @@index([ownerId], type: Hash)
   @@map("cards")
 }
 

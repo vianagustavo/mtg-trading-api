@@ -1,5 +1,5 @@
 import { NotFound } from "../../domain/error";
-import { IFindCardByIdAndOwnerRepository } from "../../repositories/Listing/interface/IFindCardByIdAndOwnerRepository";
+import { IFindCardByIdAndOwnerRepository } from "../../domain/interface/repositories/Listing/IFindCardByIdAndOwnerRepository";
 
 class GetCardByIdService {
   private findCardByIdAndOwnerRepository: IFindCardByIdAndOwnerRepository;

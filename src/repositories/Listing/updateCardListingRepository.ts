@@ -1,7 +1,7 @@
 import { Card, PrismaClient } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
+import { IUpdateCardListingRepository } from "../../domain/interface/repositories/Listing/IUpdateCardListingRepository";
 import { IUpdateCardListingFilters } from "../../domain/requestDto";
-import { IUpdateCardListingRepository } from "./interface/IUpdateCardListingRepository";
 
 export class updateCardListingRepository
   implements IUpdateCardListingRepository

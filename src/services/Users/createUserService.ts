@@ -1,8 +1,8 @@
 import { hash } from "bcryptjs";
 import { InvalidArgument } from "../../domain/error";
 import { ICreateUserRequest } from "../../domain/requestDto";
-import { ICreateUserRepository } from "../../repositories/User/interface/ICreateUserRepository";
-import { IFindUserByEmailRepository } from "../../repositories/User/interface/IFindUserRepository";
+import { IFindUserByEmailRepository } from "../../domain/interface/repositories/User/IFindUserRepository";
+import { ICreateUserRepository } from "../../domain/interface/repositories/User/ICreateUserRepository";
 
 class CreateUserService {
   private createUserRepository: ICreateUserRepository;

@@ -1,7 +1,7 @@
 import { Card, PrismaClient } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
+import { IFindCardByDataRepository } from "../../domain/interface/repositories/Listing/IFindCardByDataRepository";
 import { IFindCardByData } from "../../domain/requestDto";
-import { IFindCardByDataRepository } from "./interface/IFindCardByDataRepository";
 
 export class findCardByDataRepository implements IFindCardByDataRepository {
   private prismaClient: PrismaClient;

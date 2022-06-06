@@ -1,6 +1,6 @@
 import { PrismaClient, User } from "@prisma/client";
 import { prismaClient } from "../../database/prismaClient";
-import { IFindUserByEmailRepository } from "./interface/IFindUserRepository";
+import { IFindUserByEmailRepository } from "../../domain/interface/repositories/User/IFindUserRepository";
 
 export class findUserByEmailRepository implements IFindUserByEmailRepository {
   private prismaClient: PrismaClient;

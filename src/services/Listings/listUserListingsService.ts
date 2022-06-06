@@ -1,5 +1,5 @@
 import { prismaClient } from "../../database/prismaClient";
-import { IListUserListingsRepository } from "../../repositories/Listing/interface/IListUserListingsRepository";
+import { IListUserListingsRepository } from "../../domain/interface/repositories/Listing/IListUserListingsRepository";
 
 class ListUserListingsService {
   private listUserListingsRepository: IListUserListingsRepository;
