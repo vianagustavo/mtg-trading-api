@@ -1,27 +1,31 @@
-# RoadDev
+# MTG Trading API
 
-API feita para gerenciar redes de escolas, gerando o fluxo de inserção de estudantes e professores, autenticação dos mesmos, atualização de dados além da montagem do cronograma das aulas.
-A API também conta com uma integração externa com a API PrismaOne, onde para criarmos um estudante, precisamos encontrar uma matrícula válida no banco de dados da PrismaOne.
+A API MTG Trading API foi feita com o intuito de possibilitar jogadores e colecionadores de Magic: The Gathering a listagem de suas cartas.
+
+Na franquia, as cartas possuem diversas características e todas são levadas em consideração nas listagens. O jogador/colecionador pode adicionar uma nova carta, ler suas cartas listadas, procurar por um nome específico destre suas listagens, atualizar e/ou deletar uma listagem.
+
+Para isso, toda e qualquer lista de cartas é organizada em ordem decrescente. 
+
+Como cada jogador só pode ter acesso às próprias cartas que inseriu, foi utilizado um index no campo ownerId do nosso banco dedos, acelerando o tempo de resposta, tendo em vista que para todas as rotas é necessária uma autenticação do jogador via ownerId.
 
 
 # Sumário
 1. <a href="#Hosted-APP">Hosted APP</a>
-2. <a href="#Documentação-da-RoadDev">Documentação da RoadDev</a>
-3. <a href="#Tecnologias-utilizadas">Tecnologias Utilizadas</a>
+2. <a href="#Documentação-MTG-Tading-API">Documentação da RoadDev</a>
+3. <a href="#Tecnologias-Utilizadas">Tecnologias Utilizadas</a>
 4. <a href="#Inicializando">Inicializando</a>
 5. <a href="#Configurando-o-Projeto">Configurando o Projeto</a>
-6. <a href="#Gerando-e-Rodando-Migrations-(TypeORM)">Gerando e Rodando Migrations (TypeORM)</a>
+6. <a href="#Gerando-e-Implementando-Migrations-(Prisma)">Gerando e Rodando Migrations (TypeORM)</a>
 7. <a href="#Rodando-Testes">Rodando Testes</a>
-8. <a href="#Deploy">Deploy</a>
-9. <a href="#CI/CD">CI/CD</a>
-10. <a href="#API-Endpoints">API Endpoints</a>
-11. <a href="#Autor">Autor</a>
+8. <a href="#CI/CD">CI/CD</a>
+9. <a href="#API-Endpoints">API Endpoints</a>
+10. <a href="#Autor">Autor</a>
 
 ## Hosted APP
 
 https://mtg-trading-api.herokuapp.com/
 
-## Documentação da MTG Trading API
+## Documentação MTG Trading API
 
 https://mtg-trading-api.herokuapp.com/api-docs/
 
@@ -29,10 +33,9 @@ https://mtg-trading-api.herokuapp.com/api-docs/
 
 - [NodeJS](https://nodejs.org/)
 - [Typescript](https://www.typescriptlang.org/)
-- [TypeORM](https://typeorm.io/)
-- [Postgres](https://www.postgresql.org/)
+- [Prisma](https://typeorm.io/)
+- [Postgres](https://www.prisma.io/)
 - [Jest](https://jestjs.io/)
-- [Supertest]()
 
 
 ## Inicializando
@@ -45,19 +48,17 @@ https://mtg-trading-api.herokuapp.com/api-docs/
 
 Setar variáveis de ambiente de acordo
 
-|     Variável    |      Default     |          Notes           |
-| --------------- | ---------------- | ------------------------ |
-|  `DB_DATABASE`  | `roaddev-tests`  |       Nome do Banco      |
-|    `DB_HOST`    |    `localhost`   |       Host do Banco      |
-|  `DB_USERNAME`  |      `root`      |     Username do Banco    |
-|  `DB_PASSWORD`  |      `admin`     |      Senha do Banco      |
-|     `PORT`      |      `4800`      |  Porta de inicialização  |
-|  `ENVIRONMENT`  |      `local`     |   Variável de Ambiente   |
-|  `USER_SECRET`  |                  |  Secret - Token Usuário  |
-| `STUDENT_SECRET`|                  | Secret - Token Estudantes|
+|        Variável      |      Default     |              Notes             |
+| -------------------- | ---------------- | ------------------------------ |
+|     `DB_DATABASE`    |`mtg-trading-api` |          Nome do Banco         |
+|    `POSTGRES_USER`   |      `root`      |        Username do Banco       |
+|  `POSTGRES_PASSWORD` |      `admin`     |          Senha do Banco        |
+|        `PORT`        |      `7777`      |     Porta de inicialização     |
+|     `DATABASE_URL`   |   `PRISMA URL`   |  URL de conexão com o Postgres |
+|     `USER_SECRET`    |                  |      Secret - Token Usuário    |
 
 
-## Gerando e Implementando Migrations (TypeORM)
+## Gerando e Implementando Migrations (Prisma)
 
 Para adicionar/alterar migrations no model execute:
 
@@ -83,7 +84,9 @@ $ yarn test
 
 Aproveitando a iniciativa de utilizar o deploy na plataforma do Heroku, também foram utilizados os conceitos de CI/CD, através do GitHub Actions, sempre que for feito um push ou pull-request para a branch main, adotando boas práticas de desenvolvimento e automação da implantação da nossa aplicação.
 
-O workflow completo se encontra em: ``` .github/workflows/full-workflow.yml ```
+O workflow completo pode ser encontrado em: 
+
+``` .github/workflows/full-workflow.yml ```
 
 ## API Endpoints
 
