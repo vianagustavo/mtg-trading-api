@@ -1,13 +1,19 @@
 import { InvalidArgument } from "../../domain/error";
+import { IFindCardByIdAndOwnerRepository } from "../../domain/interface/repositories/Listing/IFindCardByIdAndOwnerRepository";
 import { IUpdateCardListingRepository } from "../../domain/interface/repositories/Listing/IUpdateCardListingRepository";
 import { IUpdateCardListingFilters } from "../../domain/requestDto";
-import { findCardByIdAndOwnerRepository } from "../../repositories/Listing/findCardByIdAndOwnerRepository";
 import { GetCardByIdService } from "./getCardByIdService";
 
 class UpdateCardListingService {
   private updateCardListingRepository: IUpdateCardListingRepository;
-  constructor(updateCardListingRepository: IUpdateCardListingRepository) {
+  private findCardByIdAndOwnerRepository: IFindCardByIdAndOwnerRepository;
+
+  constructor(
+    updateCardListingRepository: IUpdateCardListingRepository,
+    findCardByIdAndOwnerRepository: IFindCardByIdAndOwnerRepository
+  ) {
     this.updateCardListingRepository = updateCardListingRepository;
+    this.findCardByIdAndOwnerRepository = findCardByIdAndOwnerRepository;
   }
   async execute(id: string, ownerId: string, info: IUpdateCardListingFilters) {
     if (!info.price && !info.quantity) {
@@ -17,7 +23,7 @@ class UpdateCardListingService {
       info.price = parseFloat(info.price.toFixed(2));
     }
     const getCardByIdService = new GetCardByIdService(
-      new findCardByIdAndOwnerRepository()
+      this.findCardByIdAndOwnerRepository
     );
     const cardListing = await getCardByIdService.execute(id, ownerId);
 

@@ -3,6 +3,7 @@ import {
   IUpdateCardListingFilters,
   RequestWithUserId
 } from "../../domain/requestDto";
+import { findCardByIdAndOwnerRepository } from "../../repositories/Listing/findCardByIdAndOwnerRepository";
 import { updateCardListingRepository } from "../../repositories/Listing/updateCardListingRepository";
 import { UpdateCardListingService } from "../../services/Listings/updateCardListingService";
 
@@ -13,7 +14,8 @@ class UpdateCardListingController {
     const content: IUpdateCardListingFilters = request.body;
 
     const updateCardListingService = new UpdateCardListingService(
-      new updateCardListingRepository()
+      new updateCardListingRepository(),
+      new findCardByIdAndOwnerRepository()
     );
     const updatedCard = await updateCardListingService.execute(
       id,

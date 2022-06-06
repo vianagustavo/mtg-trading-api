@@ -35,6 +35,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: yarn --frozen-lockfile
+      - name: Integration testing
+        run: |
+          yarn test
+        env:
+          POSTGRES_DB: mtg-trading-api
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: admin
+          DATABASE_URL: postgresql://root:admin@localhost:5432/mtg-trading-api?schema=public
+          USER_SECRET: 3dd4375b259007313f23bc7709c7b08c
       - name: Deploy application
         if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
         uses: akhileshns/heroku-deploy@v3.12.12

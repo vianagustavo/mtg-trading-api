@@ -6,7 +6,11 @@ import { ListUserListingsController } from "./controllers/Listings/listUserListi
 import { UpdateCardListingController } from "./controllers/Listings/updateCardListingController";
 import { AuthenticateUserController } from "./controllers/Users/authenticateUserController";
 import { CreateUserController } from "./controllers/Users/createUserController";
-import { createUserSchema } from "./domain/schema";
+import {
+  authenticateUserSchema,
+  createCardSchema,
+  createUserSchema
+} from "./domain/schema";
 import { ensureAuthenticated } from "./middleware/ensureAuthenticated";
 import validateResource from "./middleware/requestValidator";
 
@@ -31,9 +35,18 @@ router.post(
   validateResource(createUserSchema),
   createUserController.handle
 );
-router.post("/login/user", authenticateUserController.handle);
+router.post(
+  "/login/user",
+  validateResource(authenticateUserSchema),
+  authenticateUserController.handle
+);
 
-router.post("/listing", ensureAuthenticated, createListingController.handle);
+router.post(
+  "/listing",
+  validateResource(createCardSchema),
+  ensureAuthenticated,
+  createListingController.handle
+);
 router.get("/listing", ensureAuthenticated, listUserListingsController.handle);
 router.get(
   "/listing/:name",
