@@ -1,37 +1,35 @@
-import { prismaClient } from "../../database/prismaClient";
 import { InvalidArgument } from "../../domain/error";
 import { ICreateListingRequest } from "../../domain/requestDto";
+import { ICreateCardListingRepository } from "../../domain/interface/repositories/Listing/ICreateCardListingRepository";
+import { IFindCardByDataRepository } from "../../domain/interface/repositories/Listing/IFindCardByDataRepository";
 
-type CreateListRequestWithOwnerId = ICreateListingRequest & { ownerId: string };
+export type CreateListRequestWithOwnerId = ICreateListingRequest & {
+  ownerId: string;
+};
 
 class CreateCardListingService {
-  async execute(info: CreateListRequestWithOwnerId) {
-    const { name, edition, language, foil, price, quantity, ownerId } = info;
-    const roundedPrice = price.toFixed(2);
-    const cardListingExists = await prismaClient.card.findFirst({
-      where: {
-        name,
-        edition,
-        language,
-        foil,
-        price: roundedPrice,
-        ownerId
-      }
-    });
+  private createCardListingRepository: ICreateCardListingRepository;
+  private findCardByDataRepository: IFindCardByDataRepository;
+
+  constructor(
+    createCardListingRepository: ICreateCardListingRepository,
+    findCardByDataRepository: IFindCardByDataRepository
+  ) {
+    this.createCardListingRepository = createCardListingRepository;
+    this.findCardByDataRepository = findCardByDataRepository;
+  }
+
+  async execute(data: CreateListRequestWithOwnerId) {
+    data.price = parseFloat(data.price.toFixed(2));
+    const cardListingExists =
+      await this.findCardByDataRepository.findCardByData(data);
+
     if (cardListingExists) {
       throw new InvalidArgument("Card is already listed.");
     }
-    const cardListing = await prismaClient.card.create({
-      data: {
-        name,
-        edition,
-        language,
-        foil,
-        price: roundedPrice,
-        quantity,
-        ownerId
-      }
-    });
+
+    const cardListing =
+      await this.createCardListingRepository.createCardListing(data);
     return cardListing;
   }
 }

@@ -54,3 +54,12 @@ export interface IUpdateCardListingFilters {
   quantity?: number;
   price?: number;
 }
+
+export interface IFindCardByData {
+  name: string;
+  edition: string;
+  language: Language;
+  foil: boolean;
+  price: number;
+  ownerId: string;
+}

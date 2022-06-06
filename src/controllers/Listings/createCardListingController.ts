@@ -4,6 +4,8 @@ import {
   ICreateListingResponse,
   RequestWithUserId
 } from "../../domain/requestDto";
+import { createCardListingRepository } from "../../repositories/Listing/createCardListingRepository";
+import { findCardByDataRepository } from "../../repositories/Listing/findCardByDataRepository";
 import { CreateCardListingService } from "../../services/Listings/createCardListingService";
 
 class CreateCardListingController {
@@ -18,7 +20,10 @@ class CreateCardListingController {
     }: ICreateListingRequest = request.body;
 
     const ownerId = (request as RequestWithUserId).user_id;
-    const createCardListingService = new CreateCardListingService();
+    const createCardListingService = new CreateCardListingService(
+      new createCardListingRepository(),
+      new findCardByDataRepository()
+    );
     const cardListing: ICreateListingResponse =
       await createCardListingService.execute({
         name,

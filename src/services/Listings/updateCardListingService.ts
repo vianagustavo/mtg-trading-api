@@ -1,25 +1,37 @@
-import { prismaClient } from "../../database/prismaClient";
-import { InvalidArgument, NotFound } from "../../domain/error";
+import { InvalidArgument } from "../../domain/error";
+import { IFindCardByIdAndOwnerRepository } from "../../domain/interface/repositories/Listing/IFindCardByIdAndOwnerRepository";
+import { IUpdateCardListingRepository } from "../../domain/interface/repositories/Listing/IUpdateCardListingRepository";
 import { IUpdateCardListingFilters } from "../../domain/requestDto";
 import { GetCardByIdService } from "./getCardByIdService";
 
 class UpdateCardListingService {
+  private updateCardListingRepository: IUpdateCardListingRepository;
+  private findCardByIdAndOwnerRepository: IFindCardByIdAndOwnerRepository;
+
+  constructor(
+    updateCardListingRepository: IUpdateCardListingRepository,
+    findCardByIdAndOwnerRepository: IFindCardByIdAndOwnerRepository
+  ) {
+    this.updateCardListingRepository = updateCardListingRepository;
+    this.findCardByIdAndOwnerRepository = findCardByIdAndOwnerRepository;
+  }
   async execute(id: string, ownerId: string, info: IUpdateCardListingFilters) {
     if (!info.price && !info.quantity) {
       throw new InvalidArgument("Invalid arguments.");
     }
-    const getCardByIdService = new GetCardByIdService();
+    if (info.price !== undefined) {
+      info.price = parseFloat(info.price.toFixed(2));
+    }
+    const getCardByIdService = new GetCardByIdService(
+      this.findCardByIdAndOwnerRepository
+    );
     const cardListing = await getCardByIdService.execute(id, ownerId);
-    const roundedPrice = info.price?.toFixed(2);
-    const newCardListing = await prismaClient.card.update({
-      where: {
-        id: cardListing.id
-      },
-      data: {
-        price: roundedPrice,
-        quantity: info.quantity
-      }
-    });
+
+    const newCardListing =
+      await this.updateCardListingRepository.updateCardListing(
+        cardListing.id,
+        info
+      );
 
     return newCardListing;
   }
