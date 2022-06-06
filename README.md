@@ -1,3 +1,6 @@
+![logo](https://img2.gratispng.com/20180528/vsh/kisspng-magic-the-gathering-online-dominaria-playing-card-friends-gathering-5b0c43f5bd9053.5062045015275304857765.jpg)
+
+
 # MTG Trading API
 
 A API MTG Trading API foi feita com o intuito de possibilitar jogadores e colecionadores de Magic: The Gathering a listagem de suas cartas.
