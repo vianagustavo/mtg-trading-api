@@ -27,13 +27,14 @@
                     "type": "string"
                   },
                   "loginPassword": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": "6"
                   }
                 },
                 "example": {
                   "name": "Gustavo Ferreira",
                   "email": "test@email.com",
-                  "loginPassword": "1234"
+                  "loginPassword": "123456"
                 }
               }
             }
