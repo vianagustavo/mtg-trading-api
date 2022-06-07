@@ -1,5 +1,9 @@
 ![logo](https://1000logos.net/wp-content/uploads/2020/11/Magic-The-Gathering-Logo-500x313.png)
 
+<p align="center">
+  <img width="460" height="300" src="https://1000logos.net/wp-content/uploads/2020/11/Magic-The-Gathering-Logo-500x313.png">
+</p>
+
 
 # MTG Trading API
 
