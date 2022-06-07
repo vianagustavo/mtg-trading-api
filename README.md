@@ -42,7 +42,6 @@ https://mtg-trading-api.herokuapp.com/api-docs/
 - [Postgres](https://www.prisma.io/)
 - [Jest](https://jestjs.io/)
 
-
 ## Inicializando
 
 - Clonar o repositório: `git clone https://github.com/vianagustavo/roaddev.git`
@@ -84,7 +83,6 @@ $ yarn test
 
 ```
 
-
 ## CI/CD
 
 Aproveitando a iniciativa de utilizar o deploy na plataforma do Heroku, também foram utilizados os conceitos de CI/CD, através do GitHub Actions, sempre que for feito um push ou pull-request para a branch main, adotando boas práticas de desenvolvimento e automação da implantação da nossa aplicação.
@@ -104,7 +102,6 @@ O workflow completo pode ser encontrado em:
 | `GET`    |                   `/listing/:name`              | Leitura de listagens filtrando por nome    |        Usuário        |
 | `PATCH`  |                   `/listing/:id`                |   Atualização de preço e/ou quantidade     |        Usuário        |
 | `DELETE` |                   `/listing/:id`                |           Deletar uma listagem ativa       |        Usuário        |
-
 
 ## Autor
 
