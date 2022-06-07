@@ -16,7 +16,7 @@ Como cada jogador só pode ter acesso às próprias cartas que inseriu, foi util
 
 # Sumário
 1. <a href="#Hosted-APP">Hosted APP</a>
-2. <a href="#Documentação-MTG-Tading-API">Documentação da MTG Trading API</a>
+2. <a href="#Documentação-MTG-Trading-API">Documentação MTG Trading API</a>
 3. <a href="#Tecnologias-Utilizadas">Tecnologias Utilizadas</a>
 4. <a href="#Inicializando">Inicializando</a>
 5. <a href="#Configurando-o-Projeto">Configurando o Projeto</a>
