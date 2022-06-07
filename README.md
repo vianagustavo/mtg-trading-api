@@ -58,7 +58,7 @@ Setar variáveis de ambiente de acordo
 |     `POSTGRES_DB`    |`mtg-trading-api` |          Nome do Banco         |
 |    `POSTGRES_USER`   |      `root`      |        Username do Banco       |
 |  `POSTGRES_PASSWORD` |      `admin`     |          Senha do Banco        |
-|        `PORT`        |      `7777`      |     Porta de inicialização     |
+|        `PORT`        |      `7777`      |       Porta da Aplicação       |
 |     `DATABASE_URL`   |   `PRISMA URL`   |  URL de conexão com o Postgres |
 |     `USER_SECRET`    |                  |      Secret - Token Usuário    |
 
