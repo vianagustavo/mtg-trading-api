@@ -18,8 +18,8 @@ Como cada jogador só pode ter acesso às próprias cartas que inseriu, foi util
 1. <a href="#Hosted-APP">Hosted APP</a>
 2. <a href="#Documentação-MTG-Trading-API">Documentação MTG Trading API</a>
 3. <a href="#Tecnologias-Utilizadas">Tecnologias Utilizadas</a>
-4. <a href="#Inicializando">Inicializando</a>
-5. <a href="#Configurando-o-Projeto">Configurando o Projeto</a>
+4. <a href="#Configurando-o-Projeto">Configurando o Projeto</a>
+5. <a href="#Inicializando">Inicializando</a>
 6. <a href="#Gerando-e-Implementando-Migrations-(Prisma)">Gerando e Implementando Migrations (Prisma)</a>
 7. <a href="#Rodando-Testes">Rodando Testes</a>
 8. <a href="#CI/CD">CI/CD</a>
@@ -42,11 +42,6 @@ https://mtg-trading-api.herokuapp.com/api-docs/
 - [Postgres](https://www.prisma.io/)
 - [Jest](https://jestjs.io/)
 
-## Inicializando
-
-- Clonar o repositório: `git clone https://github.com/vianagustavo/roaddev.git`
-- Rodar `yarn --frozen-lockfile`
-- Setar as variáveis de ambiente no .env (conforme próximo passo)
 
 ## Configurando o Projeto
 
@@ -61,6 +56,15 @@ Setar variáveis de ambiente de acordo
 |     `DATABASE_URL`   |   `PRISMA URL`   |  URL de conexão com o Postgres |
 |     `USER_SECRET`    |                  |      Secret - Token Usuário    |
 
+## Inicializando
+
+- Clonar o repositório: `git clone https://github.com/vianagustavo/roaddev.git`
+- Instalar dependências: `yarn --frozen-lockfile`
+- Executar aplicação: `yarn dev`
+
+OBS: Há a alternativa de incializar a aplicação via Docker:
+- Buildar imagem da aplicação: `docker build -t mtg-trading-api .`
+- Executar docker-compose: `docker-compose up -d`
 
 ## Gerando e Implementando Migrations (Prisma)
 
