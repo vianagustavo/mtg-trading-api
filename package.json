@@ -9,7 +9,8 @@
     "build": "tsc",
     "start": "prisma migrate deploy && node dist/src/server.js",
     "dev": "yarn prisma migrate dev && ts-node-dev -r dotenv/config src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@prisma/client": "3.14.0",
