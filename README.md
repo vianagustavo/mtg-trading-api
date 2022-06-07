@@ -55,7 +55,7 @@ Setar variáveis de ambiente de acordo
 
 |        Variável      |      Default     |              Notes             |
 | -------------------- | ---------------- | ------------------------------ |
-|     `DB_DATABASE`    |`mtg-trading-api` |          Nome do Banco         |
+|     `POSTGRES_DB`    |`mtg-trading-api` |          Nome do Banco         |
 |    `POSTGRES_USER`   |      `root`      |        Username do Banco       |
 |  `POSTGRES_PASSWORD` |      `admin`     |          Senha do Banco        |
 |        `PORT`        |      `7777`      |     Porta de inicialização     |
