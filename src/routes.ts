@@ -9,7 +9,8 @@ import { CreateUserController } from "./controllers/Users/createUserController";
 import {
   authenticateUserSchema,
   createCardSchema,
-  createUserSchema
+  createUserSchema,
+  updateCardSchema
 } from "./domain/schema";
 import { ensureAuthenticated } from "./middleware/ensureAuthenticated";
 import validateResource from "./middleware/requestValidator";
@@ -55,6 +56,7 @@ router.get(
 );
 router.patch(
   "/listing/:id",
+  validateResource(updateCardSchema),
   ensureAuthenticated,
   updateCardListingController.handle
 );

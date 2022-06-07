@@ -1,14 +1,14 @@
-FROM node
+FROM node:14
 
 
 WORKDIR /usr/app
 
-COPY package.json ./
+COPY . ./
 
-RUN npm install
+RUN yarn --frozen-lockfile
 
-COPY . .
+RUN yarn build
 
 EXPOSE 7777
 
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "start"]

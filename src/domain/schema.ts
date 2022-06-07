@@ -53,3 +53,16 @@ export const createCardSchema = object({
 });
 
 export type CreateCardInput = TypeOf<typeof createCardSchema>;
+
+export const updateCardSchema = object({
+  body: object({
+    price: number({
+      required_error: "loginPassword is required"
+    }).optional(),
+    quantity: number({
+      required_error: "Email is required"
+    }).optional()
+  })
+});
+
+export type UpdateCardInput = TypeOf<typeof updateCardSchema>;

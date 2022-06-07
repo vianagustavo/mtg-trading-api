@@ -19,9 +19,6 @@ class UpdateCardListingService {
     if (!info.price && !info.quantity) {
       throw new InvalidArgument("Invalid arguments.");
     }
-    if (info.price !== undefined) {
-      info.price = parseFloat(info.price.toFixed(2));
-    }
     const getCardByIdService = new GetCardByIdService(
       this.findCardByIdAndOwnerRepository
     );

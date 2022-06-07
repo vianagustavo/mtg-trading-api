@@ -20,7 +20,6 @@ class CreateCardListingService {
   }
 
   async execute(data: CreateListRequestWithOwnerId) {
-    data.price = parseFloat(data.price.toFixed(2));
     const cardListingExists =
       await this.findCardByDataRepository.findCardByData(data);
 
