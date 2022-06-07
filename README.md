@@ -1,4 +1,4 @@
-![logo](https://img2.gratispng.com/20180528/vsh/kisspng-magic-the-gathering-online-dominaria-playing-card-friends-gathering-5b0c43f5bd9053.5062045015275304857765.jpg)
+![logo](https://1000logos.net/wp-content/uploads/2020/11/Magic-The-Gathering-Logo-500x313.png)
 
 
 # MTG Trading API
